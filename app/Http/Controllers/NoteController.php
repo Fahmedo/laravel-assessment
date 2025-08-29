@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreNoteRequest;
-use App\Http\Requests\UpdateNoteRequest;
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use App\Http\Requests\StoreNoteRequest;
+use App\Http\Requests\UpdateNoteRequest;
 
 class NoteController extends Controller
 {
@@ -15,7 +16,7 @@ class NoteController extends Controller
     public function index(Request $request)
     {
         $notes = $request->user()->notes()->paginate(10);
-        
+
         return response()->json($notes);
     }
 
